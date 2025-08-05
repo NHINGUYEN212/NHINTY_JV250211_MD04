@@ -96,7 +96,7 @@
                 <td>${product.description}</td>
                 <td>${product.price}</td>
                 <td><img src="${product.image}" alt=" "></td>
-                <td><a href="#">Xoá</a></td>
+                <td><a href="exercise04?action=delete&id=${product.id}">Xoá</a></td>
 
             </tr>
 

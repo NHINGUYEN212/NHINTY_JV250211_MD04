@@ -22,7 +22,15 @@ public class Exercise04Servlet extends HttpServlet {
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        request.setAttribute("products", products);
-        request.getRequestDispatcher("/exercise04.jsp").forward(request, response);
+        String action = request.getParameter("action");
+        if (action == null) {
+            request.setAttribute("products", products);
+            request.getRequestDispatcher("/exercise04.jsp").forward(request, response);
+        } else if (action.equals("delete")) {
+            int id = Integer.parseInt(request.getParameter("id"));
+            products.removeIf(product -> product.getId() == id);
+        }
+        response.sendRedirect("exercise04");
+
     }
 }
